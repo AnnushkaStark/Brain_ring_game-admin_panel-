@@ -14,40 +14,50 @@ conn.commit()
 
 #print(one_result)
 def add_question():
-    while True:
-        print('Enter text of a question:')
-        text1 = input()
-        print('Enter answer of a question:')
-        answer1 = input()
-        print('Enter comment to question:')
-        comment1 = input()
-        print('Enter level of a question:')
-        level1 = input()
-        print('OK!')
-        time.sleep(1)
-        print('You etnered next values:')
-        print('Question text is:')
-        print(text1)
-        time.sleep(1)
-        print('Answer to question is:')
-        print(answer1)
-        time.sleep(1)
-        print('Comment to question is:')
-        print(comment1)
-        time.sleep(1)
-        print('Question level is:')
-        print(level1)
-        time.sleep(1)
-        print('Are you entered right values? (Y/N)')
-        choise1 = input()
-        if choise1 == 'Y':
-            questions = [(text1, answer1, comment1, level1)]
-            curs.executemany(f'INSERT INTO questions (text, answer, comment, level) VALUES(?, ?, ?, ?);', questions)
-            conn.commit()
-            curs.execute('select * from questions;')
-            res = curs.fetchall()
-            print(res)
-            break
+    print(' ')
+    print('If you whant to add data from .csv file - enter \'csv\'')
+    print('If you whant to add data manual - enter \'manual\'')
+    print(' ')
+    choise = input()
+    if choise == 'csv':
+        pass #TODO написать ввод из цсв
+    elif choise == 'manual':
+        while True:
+            print('Enter text of a question:')
+            text1 = input()
+            print('Enter answer of a question:')
+            answer1 = input()
+            print('Enter comment to question:')
+            comment1 = input()
+            print('Enter level of a question:')
+            level1 = input()
+            print('OK!')
+            time.sleep(1)
+            print('You etnered next values:')
+            print('Question text is:')
+            print(text1)
+            time.sleep(1)
+            print('Answer to question is:')
+            print(answer1)
+            time.sleep(1)
+            print('Comment to question is:')
+            print(comment1)
+            time.sleep(1)
+            print('Question level is:')
+            print(level1)
+            time.sleep(1)
+            print('Are you entered right values? (Y/N)')
+            choise1 = input()
+            if choise1 == 'Y':
+                questions = [(text1, answer1, comment1, level1)]
+                curs.executemany(f'INSERT INTO questions (text, answer, comment, level) VALUES(?, ?, ?, ?);', questions)
+                conn.commit()
+                curs.execute('select * from questions;')
+                res = curs.fetchall()
+                print(res)
+                break
+            else:
+                pass
         else:
             pass
 
