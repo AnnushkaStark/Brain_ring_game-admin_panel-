@@ -6,4 +6,4 @@ result = cur.fetchone()
 querry = 'insert into brein_base(вопрос, ответ, комментарий, уровень) values (input(),input(),input, int(input(), NULL, NULL);'
 count = cur.execute(querry)
 conn.commit()
-cur.close()
+conn.close()
