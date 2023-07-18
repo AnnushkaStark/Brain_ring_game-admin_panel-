@@ -1,7 +1,15 @@
-.gitignore
-main.py
-.idea/
-*__pycache__
-/logic/tests.py
-_обработано/
+# Docs and future updrades
+qml/
+project_structure.txt
+
+# Virtual environments
+.env
+.venv
+env/
 venv/
+
+# Auto generated folders and files
+.idea/
+.DS_Store
+
+
