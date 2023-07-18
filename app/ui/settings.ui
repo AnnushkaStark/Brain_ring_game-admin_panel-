@@ -102,9 +102,9 @@
    <item row="0" column="0">
     <widget class="QTabWidget" name="tabWidget_SettingsWindows">
      <property name="currentIndex">
-      <number>0</number>
+      <number>3</number>
      </property>
-     <widget class="QWidget" name="Timer">
+     <widget class="QWidget" name="tabTimer">
       <attribute name="title">
        <string>Таймер</string>
       </attribute>
@@ -147,7 +147,7 @@
            </spacer>
           </item>
           <item>
-           <widget class="QSpinBox" name="spinBox_round_time">
+           <widget class="QSpinBox" name="spinBox_round_duration">
             <property name="minimum">
              <number>20</number>
             </property>
@@ -343,7 +343,7 @@
        </layout>
       </widget>
      </widget>
-     <widget class="QWidget" name="Score">
+     <widget class="QWidget" name="taScore">
       <attribute name="title">
        <string>Счёт</string>
       </attribute>
@@ -609,7 +609,7 @@
        </layout>
       </widget>
      </widget>
-     <widget class="QWidget" name="Falsestart">
+     <widget class="QWidget" name="tabFalsestart">
       <attribute name="title">
        <string>Фальстарт</string>
       </attribute>
@@ -738,11 +738,11 @@
        </property>
       </widget>
      </widget>
-     <widget class="QWidget" name="Protocol">
+     <widget class="QWidget" name="tabProtocol">
       <attribute name="title">
        <string>Протокол</string>
       </attribute>
-      <widget class="QCheckBox" name="checkBox_protocol_game">
+      <widget class="QCheckBox" name="checkBox_keep_game_protocol">
        <property name="geometry">
         <rect>
          <x>30</x>
