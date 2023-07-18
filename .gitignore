@@ -1,9 +1,7 @@
-/main.py
-/.idea/inspectionProfiles/
-/.idea/BrainRing.iml
-/.idea/misc.xml
-/.idea/modules.xml
-/.idea/vcs.xml
-/.idea/workspace.xml
-/.idea/.gitignore
+.gitignore
+main.py
+.idea/
+*__pycache__
 /logic/tests.py
+_обработано/
+venv/

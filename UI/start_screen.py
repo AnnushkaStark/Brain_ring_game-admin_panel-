@@ -7,7 +7,7 @@
 
 
 from PyQt6 import QtCore, QtGui, QtWidgets
-from new_game_1 import Ui_nGame_1
+from new_game import Ui_new_game
 
 
 class Ui_MainWindow(object):
@@ -61,18 +61,20 @@ class Ui_MainWindow(object):
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
-    def change_size(self):
-        self.setGeometry(400, 500, 653, 430)
+    #def change_size(self):
+    #    self.setGeometry(400, 500, 653, 430)
 
-    def opn_new_game_1(self):
-        self.nGame_1 = QtWidgets.QMainWindow()
-        self.ui_nGame_1 = Ui_nGame_1()
-        self.ui_nGame_1.setupUi(self.nGame_1)
-        self.nGame_1.show()
+    def open_new_game(self):
+        self.new_game = QtWidgets.QMainWindow()
+        self.ui_new_game = Ui_new_game()
+        self.ui_new_game.setupUi(self.new_game)
+        self.new_game.show()
         # self.wnd_wall = QtWidgets.QMainWindow()
         # self.ui_wndWall = Ui_wnd_wall()
         # self.ui_wndWall.setupUi(self.wnd_wall)
         # self.wnd_wall.show()
+
+
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))

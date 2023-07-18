@@ -130,7 +130,7 @@ def delete_question():
             print(f'comment is - {res[3]}.')
             print(f'level is - {res[4]}.')
             print('---------------------------------------------')
-            time.sleep(2)
+            time.sleep(1)
         else:
             break
     print('Это нужный вам вопрос? (Y/N)')

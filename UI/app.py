@@ -8,7 +8,7 @@ from UI.start_screen import Ui_MainWindow
 class MyWindow(QMainWindow, Ui_MainWindow):
     def __init__(self):
         super().__init__()
-        self.change_size()
+        #self.change_size()
         # Инициализируйте интерфейс из класса Ui_MainWindow
         self.setupUi(self)
 
