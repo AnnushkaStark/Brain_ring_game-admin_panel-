@@ -27,82 +27,114 @@
   </property>
   <layout class="QGridLayout" name="gridLayout_4">
    <item row="1" column="0">
-    <layout class="QGridLayout" name="gridLayout_3">
-     <item row="0" column="0">
-      <layout class="QGridLayout" name="gridLayout_2">
-       <item row="0" column="0">
-        <spacer name="horizontalSpacer_5">
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>40</width>
-           <height>20</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item row="0" column="2">
-        <widget class="QPushButton" name="pushButton_save">
-         <property name="text">
-          <string>Сохранить</string>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="1">
-        <widget class="QPushButton" name="pushButton_download">
-         <property name="text">
-          <string>Загрузить</string>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </item>
-     <item row="1" column="0">
-      <layout class="QGridLayout" name="gridLayout">
-       <item row="0" column="0">
-        <widget class="QPushButton" name="pushButton_default">
-         <property name="text">
-          <string>По умолчанию</string>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="1">
-        <spacer name="horizontalSpacer_4">
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>40</width>
-           <height>20</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item row="0" column="2">
-        <widget class="QPushButton" name="pushButton_apply">
-         <property name="text">
-          <string>Применить</string>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="3">
-        <widget class="QPushButton" name="pushButton_cansel">
-         <property name="text">
-          <string>Отмена</string>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </item>
-    </layout>
+    <widget class="QFrame" name="frame">
+     <layout class="QGridLayout" name="gridLayout_3">
+      <item row="1" column="0">
+       <layout class="QGridLayout" name="gridLayout">
+        <item row="0" column="2">
+         <widget class="QPushButton" name="pushButton_apply">
+          <property name="minimumSize">
+           <size>
+            <width>150</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>Применить</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="0">
+         <widget class="QPushButton" name="pushButton_default">
+          <property name="minimumSize">
+           <size>
+            <width>150</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>По умолчанию</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="3">
+         <widget class="QPushButton" name="pushButton_cansel">
+          <property name="minimumSize">
+           <size>
+            <width>150</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>Отмена</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <spacer name="horizontalSpacer_5">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
+      </item>
+      <item row="0" column="0">
+       <layout class="QGridLayout" name="gridLayout_2">
+        <item row="1" column="3">
+         <widget class="QPushButton" name="pushButton_save">
+          <property name="minimumSize">
+           <size>
+            <width>150</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>Сохранить</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="1">
+         <widget class="QPushButton" name="pushButton_download">
+          <property name="minimumSize">
+           <size>
+            <width>150</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>Загрузить</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <spacer name="horizontalSpacer_4">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </widget>
    </item>
    <item row="0" column="0">
-    <widget class="QTabWidget" name="tabWidget_SettingsWindows">
+    <widget class="QTabWidget" name="tabWidget">
      <property name="currentIndex">
-      <number>3</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="tabTimer">
       <attribute name="title">
@@ -112,16 +144,16 @@
        <property name="geometry">
         <rect>
          <x>30</x>
-         <y>20</y>
-         <width>508</width>
-         <height>214</height>
+         <y>21</y>
+         <width>358</width>
+         <height>186</height>
         </rect>
        </property>
-       <layout class="QVBoxLayout" name="verticalLayout_8">
+       <layout class="QVBoxLayout" name="verticalLayout_7">
         <item>
          <layout class="QHBoxLayout" name="horizontalLayout_4">
           <item>
-           <widget class="QLabel" name="label_time_answer">
+           <widget class="QLabel" name="label_round_duration">
             <property name="font">
              <font>
               <pointsize>13</pointsize>
@@ -191,20 +223,20 @@
          </layout>
         </item>
         <item>
-         <spacer name="horizontalSpacer_7">
+         <spacer name="horizontalSpacer_6">
           <property name="orientation">
            <enum>Qt::Horizontal</enum>
           </property>
           <property name="sizeHint" stdset="0">
            <size>
-            <width>40</width>
+            <width>328</width>
             <height>20</height>
            </size>
           </property>
          </spacer>
         </item>
         <item>
-         <layout class="QVBoxLayout" name="verticalLayout_7">
+         <layout class="QVBoxLayout" name="verticalLayout_6">
           <item>
            <widget class="QLabel" name="label_time_left">
             <property name="font">
@@ -219,92 +251,88 @@
            </widget>
           </item>
           <item>
-           <layout class="QVBoxLayout" name="verticalLayout_6">
+           <widget class="QRadioButton" name="radioButton_remaining_time">
+            <property name="text">
+             <string>Оставшееся время</string>
+            </property>
+            <property name="checked">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_5">
             <item>
-             <widget class="QRadioButton" name="radioButton_remaining_time">
+             <widget class="QRadioButton" name="radioButton_fixed_time">
               <property name="text">
-               <string>Оставшееся время</string>
+               <string>Фиксированное время</string>
               </property>
               <property name="checked">
-               <bool>true</bool>
+               <bool>false</bool>
               </property>
              </widget>
             </item>
             <item>
-             <layout class="QHBoxLayout" name="horizontalLayout_5">
-              <item>
-               <widget class="QRadioButton" name="radioButton_fixed_time">
-                <property name="text">
-                 <string>Фиксированное время</string>
-                </property>
-                <property name="checked">
-                 <bool>false</bool>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <spacer name="horizontalSpacer_9">
-                <property name="orientation">
-                 <enum>Qt::Horizontal</enum>
-                </property>
-                <property name="sizeHint" stdset="0">
-                 <size>
-                  <width>40</width>
-                  <height>20</height>
-                 </size>
-                </property>
-               </spacer>
-              </item>
-              <item>
-               <widget class="QSpinBox" name="spinBox_fixed_time_amount">
-                <property name="minimum">
-                 <number>10</number>
-                </property>
-                <property name="maximum">
-                 <number>30</number>
-                </property>
-                <property name="singleStep">
-                 <number>5</number>
-                </property>
-                <property name="value">
-                 <number>20</number>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <spacer name="horizontalSpacer_12">
-                <property name="orientation">
-                 <enum>Qt::Horizontal</enum>
-                </property>
-                <property name="sizeHint" stdset="0">
-                 <size>
-                  <width>40</width>
-                  <height>18</height>
-                 </size>
-                </property>
-               </spacer>
-              </item>
-              <item>
-               <spacer name="horizontalSpacer_10">
-                <property name="orientation">
-                 <enum>Qt::Horizontal</enum>
-                </property>
-                <property name="sizeHint" stdset="0">
-                 <size>
-                  <width>40</width>
-                  <height>20</height>
-                 </size>
-                </property>
-               </spacer>
-              </item>
-             </layout>
+             <spacer name="horizontalSpacer_9">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
+             <widget class="QSpinBox" name="spinBox_fixed_time_amount">
+              <property name="minimum">
+               <number>10</number>
+              </property>
+              <property name="maximum">
+               <number>30</number>
+              </property>
+              <property name="singleStep">
+               <number>5</number>
+              </property>
+              <property name="value">
+               <number>20</number>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="horizontalSpacer_12">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>18</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
+             <spacer name="horizontalSpacer_10">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
             </item>
            </layout>
           </item>
          </layout>
         </item>
         <item>
-         <spacer name="horizontalSpacer_6">
+         <spacer name="horizontalSpacer_7">
           <property name="orientation">
            <enum>Qt::Horizontal</enum>
           </property>
@@ -317,288 +345,123 @@
          </spacer>
         </item>
         <item>
-         <layout class="QHBoxLayout" name="horizontalLayout_6">
-          <item>
-           <widget class="QCheckBox" name="checkBox_volum">
-            <property name="font">
-             <font>
-              <pointsize>13</pointsize>
-              <italic>false</italic>
-              <bold>true</bold>
-             </font>
-            </property>
-            <property name="text">
-             <string>Усиление звука таймера в последние 10 секунд</string>
-            </property>
-            <property name="checked">
-             <bool>true</bool>
-            </property>
-            <property name="tristate">
-             <bool>false</bool>
-            </property>
-           </widget>
-          </item>
-         </layout>
+         <widget class="QCheckBox" name="checkBox_volum">
+          <property name="font">
+           <font>
+            <pointsize>13</pointsize>
+            <italic>false</italic>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="text">
+           <string>Усиление звука таймера в последние 10 секунд</string>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
+          </property>
+          <property name="tristate">
+           <bool>false</bool>
+          </property>
+         </widget>
         </item>
        </layout>
       </widget>
      </widget>
-     <widget class="QWidget" name="taScore">
+     <widget class="QWidget" name="tabScore">
       <attribute name="title">
        <string>Счёт</string>
       </attribute>
-      <widget class="QWidget" name="verticalLayoutWidget_4">
+      <widget class="QFrame" name="verticalFrame_4">
        <property name="geometry">
         <rect>
-         <x>290</x>
-         <y>150</y>
-         <width>242</width>
-         <height>101</height>
+         <x>260</x>
+         <y>140</y>
+         <width>294</width>
+         <height>123</height>
         </rect>
        </property>
-       <layout class="QVBoxLayout" name="endgame_layout">
-        <item>
-         <widget class="QLabel" name="label_end_game">
-          <property name="font">
-           <font>
-            <pointsize>10</pointsize>
-            <bold>true</bold>
-           </font>
-          </property>
-          <property name="text">
-           <string>Окончание игры</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QRadioButton" name="radioButton_endgane_notauto">
-          <property name="text">
-           <string>Не завершается автоматически</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <layout class="QHBoxLayout" name="horizontalLayout">
-          <item>
-           <widget class="QRadioButton" name="radioButton_endgame_Nscore">
+       <layout class="QGridLayout" name="gridLayout_9">
+        <item row="0" column="0">
+         <layout class="QGridLayout" name="gridLayout_8">
+          <item row="0" column="0">
+           <widget class="QLabel" name="label_end_game">
+            <property name="font">
+             <font>
+              <pointsize>13</pointsize>
+              <bold>true</bold>
+             </font>
+            </property>
             <property name="text">
-             <string>До количетва очков</string>
+             <string>Окончание игры</string>
             </property>
            </widget>
           </item>
-          <item>
-           <widget class="QSpinBox" name="spinBox_endgame_Nscore"/>
-          </item>
-          <item>
-           <spacer name="horizontalSpacer_2">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>40</width>
-              <height>20</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
-         </layout>
-        </item>
-        <item>
-         <layout class="QHBoxLayout" name="horizontalLayout_3">
-          <item>
-           <widget class="QRadioButton" name="radioButton_endgame_Nanswer">
+          <item row="1" column="0">
+           <widget class="QRadioButton" name="radioButton_endgane_notauto">
             <property name="text">
-             <string>До количества вопросов</string>
+             <string>Не завершается автоматически</string>
             </property>
            </widget>
           </item>
-          <item>
-           <widget class="QSpinBox" name="spinBox_endgame_Nanswer">
-            <property name="maximum">
-             <number>99</number>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <spacer name="horizontalSpacer_3">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>40</width>
-              <height>20</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
-         </layout>
-        </item>
-       </layout>
-      </widget>
-      <widget class="QWidget" name="verticalLayoutWidget_5">
-       <property name="geometry">
-        <rect>
-         <x>20</x>
-         <y>150</y>
-         <width>227</width>
-         <height>68</height>
-        </rect>
-       </property>
-       <layout class="QVBoxLayout" name="verticalLayout">
-        <item>
-         <widget class="QLabel" name="label_two_answers">
-          <property name="maximumSize">
-           <size>
-            <width>173</width>
-            <height>16</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <pointsize>10</pointsize>
-            <bold>true</bold>
-           </font>
-          </property>
-          <property name="text">
-           <string>Одновременный ответ</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QRadioButton" name="radioButton_draw_choice">
-          <property name="text">
-           <string>Бросать жребий вручную</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QRadioButton" name="radioButton_draw_auto">
-          <property name="text">
-           <string>Бросать жребий автоматически</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </widget>
-      <widget class="QLabel" name="label_cost_question_group">
-       <property name="geometry">
-        <rect>
-         <x>251</x>
-         <y>11</y>
-         <width>107</width>
-         <height>16</height>
-        </rect>
-       </property>
-       <property name="maximumSize">
-        <size>
-         <width>282</width>
-         <height>16</height>
-        </size>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>10</pointsize>
-         <bold>true</bold>
-        </font>
-       </property>
-       <property name="text">
-        <string>Стоимость вопроса</string>
-       </property>
-      </widget>
-      <widget class="QWidget" name="">
-       <property name="geometry">
-        <rect>
-         <x>210</x>
-         <y>40</y>
-         <width>368</width>
-         <height>80</height>
-        </rect>
-       </property>
-       <layout class="QVBoxLayout" name="verticalLayout_2">
-        <item>
-         <widget class="QRadioButton" name="radioButton_always_one">
-          <property name="text">
-           <string>Всегда 1 очко</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QRadioButton" name="radioButton_store_price">
-          <property name="text">
-           <string>Накапливается за не отвеченные вопросы</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <layout class="QHBoxLayout" name="horizontalLayout_2">
-          <item>
-           <widget class="QRadioButton" name="radioButton_add_cost_answer">
-            <property name="text">
-             <string>Указывать стоимость вопроса вручную</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QSpinBox" name="spinBox_addcost_answer"/>
-          </item>
-         </layout>
-        </item>
-       </layout>
-      </widget>
-      <widget class="QWidget" name="">
-       <property name="geometry">
-        <rect>
-         <x>22</x>
-         <y>12</y>
-         <width>212</width>
-         <height>126</height>
-        </rect>
-       </property>
-       <layout class="QVBoxLayout" name="verticalLayout_5">
-        <item>
-         <widget class="QLabel" name="label_score_group">
-          <property name="font">
-           <font>
-            <pointsize>10</pointsize>
-            <bold>true</bold>
-           </font>
-          </property>
-          <property name="text">
-           <string>Счёт</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <layout class="QVBoxLayout" name="verticalLayout_4">
-          <item>
-           <widget class="QRadioButton" name="radioButton_score_auto">
-            <property name="text">
-             <string>Вёдётся автоматически</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <layout class="QVBoxLayout" name="verticalLayout_3">
+          <item row="2" column="0">
+           <layout class="QHBoxLayout" name="horizontalLayout">
             <item>
-             <widget class="QRadioButton" name="radioButton_score_not">
+             <widget class="QRadioButton" name="radioButton_endgame_Nscore">
               <property name="text">
-               <string>Не ведётся</string>
+               <string>До количетва очков</string>
               </property>
              </widget>
             </item>
             <item>
-             <widget class="QCheckBox" name="checkBox_score_fine">
+             <spacer name="horizontalSpacer_17">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
+             <widget class="QSpinBox" name="spinBox_endgame_Nscore"/>
+            </item>
+           </layout>
+          </item>
+          <item row="3" column="0">
+           <layout class="QHBoxLayout" name="horizontalLayout_3">
+            <item>
+             <widget class="QRadioButton" name="radioButton_endgame_Nanswer">
               <property name="text">
-               <string>Неверный ответ штрафуется</string>
+               <string>До количества вопросов</string>
+              </property>
+              <property name="checked">
+               <bool>true</bool>
               </property>
              </widget>
             </item>
             <item>
-             <widget class="QCheckBox" name="checkBox_score_clear">
-              <property name="text">
-               <string>Сбрасывать в начале раунда</string>
+             <spacer name="horizontalSpacer_18">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
+             <widget class="QSpinBox" name="spinBox_endgame_Nanswer">
+              <property name="minimum">
+               <number>1</number>
+              </property>
+              <property name="maximum">
+               <number>25</number>
               </property>
              </widget>
             </item>
@@ -608,152 +471,475 @@
         </item>
        </layout>
       </widget>
+      <widget class="QFrame" name="verticalFrame_5">
+       <property name="geometry">
+        <rect>
+         <x>21</x>
+         <y>151</y>
+         <width>227</width>
+         <height>98</height>
+        </rect>
+       </property>
+       <widget class="QWidget" name="">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>227</width>
+          <height>98</height>
+         </rect>
+        </property>
+        <layout class="QGridLayout" name="gridLayout_7">
+         <item row="2" column="0">
+          <widget class="QRadioButton" name="radioButton_draw_auto">
+           <property name="text">
+            <string>Бросать жребий автоматически</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="0">
+          <widget class="QRadioButton" name="radioButton_draw_choice">
+           <property name="text">
+            <string>Бросать жребий вручную</string>
+           </property>
+           <property name="checked">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="0">
+          <widget class="QLabel" name="label_two_answers">
+           <property name="maximumSize">
+            <size>
+             <width>173</width>
+             <height>16</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <pointsize>13</pointsize>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="text">
+            <string>Одновременный ответ</string>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="0">
+          <spacer name="horizontalSpacer_13">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </widget>
+      </widget>
+      <widget class="QFrame" name="frame_4">
+       <property name="geometry">
+        <rect>
+         <x>24</x>
+         <y>0</y>
+         <width>210</width>
+         <height>151</height>
+        </rect>
+       </property>
+       <widget class="QWidget" name="">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>10</y>
+          <width>208</width>
+          <height>134</height>
+         </rect>
+        </property>
+        <layout class="QGridLayout" name="gridLayout_6">
+         <item row="0" column="0">
+          <widget class="QLabel" name="label_score_group">
+           <property name="font">
+            <font>
+             <pointsize>13</pointsize>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="text">
+            <string>Счёт</string>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="0">
+          <widget class="QCheckBox" name="checkBox_score_clear">
+           <property name="text">
+            <string>Сбрасывать в начале раунда</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="0">
+          <widget class="QRadioButton" name="radioButton_score_not">
+           <property name="text">
+            <string>Не ведётся</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="0">
+          <widget class="QRadioButton" name="radioButton_score_auto">
+           <property name="text">
+            <string>Вёдётся автоматически</string>
+           </property>
+           <property name="checked">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="0">
+          <widget class="QCheckBox" name="checkBox_score_fine">
+           <property name="text">
+            <string>Неверный ответ штрафуется</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </widget>
+      <widget class="QFrame" name="frame_5">
+       <property name="geometry">
+        <rect>
+         <x>240</x>
+         <y>0</y>
+         <width>316</width>
+         <height>136</height>
+        </rect>
+       </property>
+       <widget class="QWidget" name="">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>10</y>
+          <width>292</width>
+          <height>128</height>
+         </rect>
+        </property>
+        <layout class="QGridLayout" name="gridLayout_5">
+         <item row="0" column="0">
+          <widget class="QLabel" name="label_cost_question_group">
+           <property name="maximumSize">
+            <size>
+             <width>282</width>
+             <height>16</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <pointsize>13</pointsize>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="text">
+            <string>Стоимость вопроса</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="0">
+          <widget class="QRadioButton" name="radioButton_always_one">
+           <property name="text">
+            <string>Всегда 1 очко</string>
+           </property>
+           <property name="checked">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="0">
+          <widget class="QRadioButton" name="radioButton_store_price">
+           <property name="text">
+            <string>Накапливается за не отвеченные вопросы</string>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="0">
+          <layout class="QHBoxLayout" name="horizontalLayout_7">
+           <item>
+            <widget class="QRadioButton" name="radioButton_add_cost_answer">
+             <property name="text">
+              <string>Указывать вручную</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <spacer name="horizontalSpacer_16">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item>
+            <widget class="QSpinBox" name="spinBox_addcost_answer"/>
+           </item>
+          </layout>
+         </item>
+         <item row="4" column="0">
+          <spacer name="horizontalSpacer_2">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>268</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </widget>
+      </widget>
      </widget>
      <widget class="QWidget" name="tabFalsestart">
       <attribute name="title">
        <string>Фальстарт</string>
       </attribute>
-      <widget class="QRadioButton" name="radioButton_false_miss">
+      <widget class="QWidget" name="">
        <property name="geometry">
         <rect>
-         <x>9</x>
-         <y>24</y>
-         <width>101</width>
-         <height>21</height>
+         <x>30</x>
+         <y>20</y>
+         <width>484</width>
+         <height>216</height>
         </rect>
        </property>
-       <property name="text">
-        <string>Отсутствует</string>
-       </property>
-      </widget>
-      <widget class="QRadioButton" name="radioButton_false_incorrect">
-       <property name="geometry">
-        <rect>
-         <x>9</x>
-         <y>66</y>
-         <width>211</width>
-         <height>21</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Считается неверным ответом</string>
-       </property>
-      </widget>
-      <widget class="QCheckBox" name="checkBox_false_ignore_time">
-       <property name="geometry">
-        <rect>
-         <x>9</x>
-         <y>108</y>
-         <width>337</width>
-         <height>21</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Нажатие кнопки “Время” игнорируется в течение</string>
-       </property>
-      </widget>
-      <widget class="QCheckBox" name="checkBox_false_ignore_last_team">
-       <property name="geometry">
-        <rect>
-         <x>9</x>
-         <y>151</y>
-         <width>312</width>
-         <height>21</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Игнорировать фальстарт последней команды</string>
-       </property>
-      </widget>
-      <widget class="QRadioButton" name="radioButton_false_block">
-       <property name="geometry">
-        <rect>
-         <x>9</x>
-         <y>193</y>
-         <width>103</width>
-         <height>21</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Блокируется</string>
-       </property>
-      </widget>
-      <widget class="QCheckBox" name="checkBox_false_time_block">
-       <property name="geometry">
-        <rect>
-         <x>9</x>
-         <y>235</y>
-         <width>224</width>
-         <height>21</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Штраф - Блокировка кнопки на </string>
-       </property>
-      </widget>
-      <widget class="QSpinBox" name="spinBox_false_timeignore">
-       <property name="geometry">
-        <rect>
-         <x>412</x>
-         <y>108</y>
-         <width>42</width>
-         <height>22</height>
-        </rect>
-       </property>
-      </widget>
-      <widget class="QLabel" name="label_false_seconds">
-       <property name="geometry">
-        <rect>
-         <x>498</x>
-         <y>108</y>
-         <width>44</width>
-         <height>16</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>секунд</string>
-       </property>
-      </widget>
-      <widget class="QSpinBox" name="spinBox_false_time_block">
-       <property name="geometry">
-        <rect>
-         <x>239</x>
-         <y>235</y>
-         <width>42</width>
-         <height>22</height>
-        </rect>
-       </property>
-      </widget>
-      <widget class="QLabel" name="label_false_block_seconds">
-       <property name="geometry">
-        <rect>
-         <x>325</x>
-         <y>235</y>
-         <width>63</width>
-         <height>16</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>секунд(ы)</string>
-       </property>
+       <layout class="QGridLayout" name="gridLayout_10">
+        <item row="5" column="0">
+         <spacer name="verticalSpacer_5">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>40</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item row="3" column="0">
+         <spacer name="verticalSpacer_2">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>40</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item row="7" column="0">
+         <spacer name="verticalSpacer_3">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>40</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item row="10" column="0">
+         <layout class="QHBoxLayout" name="horizontalLayout_2">
+          <item>
+           <widget class="QCheckBox" name="checkBox_falsestart_block_team_button">
+            <property name="text">
+             <string>Штраф - Блокировка кнопки на </string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QSpinBox" name="spinBox_falsestart_duration_block_team_button">
+            <property name="minimum">
+             <number>5</number>
+            </property>
+            <property name="maximum">
+             <number>30</number>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="label_false_block_seconds">
+            <property name="text">
+             <string>сек</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_14">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </item>
+        <item row="4" column="0">
+         <layout class="QHBoxLayout" name="horizontalLayout_6">
+          <item>
+           <widget class="QCheckBox" name="checkBox_falsestart_ignore_time_button">
+            <property name="text">
+             <string>Нажатие кнопки “Время” игнорируется в течение</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QSpinBox" name="spinBox_duration_ignore_time_button">
+            <property name="minimum">
+             <number>3</number>
+            </property>
+            <property name="maximum">
+             <number>15</number>
+            </property>
+            <property name="value">
+             <number>5</number>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="label_false_seconds">
+            <property name="text">
+             <string>сек</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_15">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </item>
+        <item row="8" column="0">
+         <widget class="QRadioButton" name="radioButton_falsestart_block_team_button">
+          <property name="text">
+           <string>Блокируется</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <spacer name="verticalSpacer">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>40</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item row="0" column="0">
+         <widget class="QRadioButton" name="radioButton_falsestart_off">
+          <property name="text">
+           <string>Отсутствует</string>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item row="9" column="0">
+         <spacer name="verticalSpacer_4">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>40</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item row="6" column="0">
+         <widget class="QCheckBox" name="checkBox_ignore_last_team_falsestart">
+          <property name="text">
+           <string>Игнорировать фальстарт последней команды</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="0">
+         <widget class="QRadioButton" name="radioButton_falsestart_equal_wrong_answer">
+          <property name="text">
+           <string>Считается неверным ответом</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
       </widget>
      </widget>
      <widget class="QWidget" name="tabProtocol">
       <attribute name="title">
        <string>Протокол</string>
       </attribute>
-      <widget class="QCheckBox" name="checkBox_keep_game_protocol">
+      <widget class="QWidget" name="">
        <property name="geometry">
         <rect>
          <x>30</x>
          <y>20</y>
-         <width>158</width>
-         <height>21</height>
+         <width>160</width>
+         <height>49</height>
         </rect>
        </property>
-       <property name="text">
-        <string>Вести протокол игры</string>
-       </property>
+       <layout class="QVBoxLayout" name="verticalLayout">
+        <item>
+         <widget class="QCheckBox" name="checkBox_keep_game_protocol">
+          <property name="text">
+           <string>Вести протокол игры</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="horizontalSpacer_3">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
       </widget>
      </widget>
     </widget>
