@@ -2,6 +2,9 @@
 qml/
 project_structure.txt
 
+# Auto generated PyQt files
+*_ui.py
+
 # Virtual environments
 .env
 .venv
