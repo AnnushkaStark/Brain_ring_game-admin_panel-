@@ -91,7 +91,7 @@
        <rect>
         <x>51</x>
         <y>41</y>
-        <width>410</width>
+        <width>423</width>
         <height>230</height>
        </rect>
       </property>
@@ -375,7 +375,7 @@
         <x>380</x>
         <y>260</y>
         <width>321</width>
-        <height>105</height>
+        <height>111</height>
        </rect>
       </property>
       <layout class="QGridLayout" name="gridLayout_8">
@@ -554,12 +554,13 @@
         <widget class="QLabel" name="label_two_answers">
          <property name="maximumSize">
           <size>
-           <width>173</width>
+           <width>200</width>
            <height>16</height>
           </size>
          </property>
          <property name="font">
           <font>
+           <family>Segoe Fluent Icons</family>
            <pointsize>13</pointsize>
            <bold>true</bold>
           </font>
@@ -594,7 +595,7 @@
         <x>50</x>
         <y>40</y>
         <width>321</width>
-        <height>130</height>
+        <height>133</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_22">
@@ -1035,7 +1036,7 @@
     <rect>
      <x>10</x>
      <y>470</y>
-     <width>776</width>
+     <width>761</width>
      <height>41</height>
     </rect>
    </property>
