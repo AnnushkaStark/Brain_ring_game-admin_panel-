@@ -62,7 +62,7 @@
      <enum>QTabWidget::Triangular</enum>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>0</number>
     </property>
     <property name="usesScrollButtons">
      <bool>true</bool>
@@ -164,7 +164,7 @@
           </spacer>
          </item>
          <item>
-          <widget class="QSpinBox" name="spinBox_round_duration">
+          <widget class="QSpinBox" name="spinBox_answer_duration">
            <property name="minimum">
             <number>20</number>
            </property>
@@ -264,7 +264,7 @@
            <item>
             <layout class="QVBoxLayout" name="verticalLayout_6">
              <item>
-              <widget class="QRadioButton" name="radioButton_remaining_time">
+              <widget class="QRadioButton" name="radioButton_remaining_answer_time">
                <property name="text">
                 <string>Оставшееся время</string>
                </property>
@@ -276,7 +276,7 @@
              <item>
               <layout class="QHBoxLayout" name="horizontalLayout_5">
                <item>
-                <widget class="QRadioButton" name="radioButton_fixed_time">
+                <widget class="QRadioButton" name="radioButton_fixed_answer_time">
                  <property name="text">
                   <string>Фиксированное время</string>
                  </property>
@@ -299,7 +299,7 @@
                 </spacer>
                </item>
                <item>
-                <widget class="QSpinBox" name="spinBox_fixed_time_amount">
+                <widget class="QSpinBox" name="spinBox_fixed_answer_time_amount">
                  <property name="minimum">
                   <number>10</number>
                  </property>
@@ -343,7 +343,7 @@
         </layout>
        </item>
        <item row="4" column="0">
-        <widget class="QCheckBox" name="checkBox_timer_louder_sound_when_round_time_runs_out">
+        <widget class="QCheckBox" name="checkBox_timer_louder_when_round_time_runs_out">
          <property name="font">
           <font>
            <pointsize>13</pointsize>
@@ -380,7 +380,7 @@
       </property>
       <layout class="QGridLayout" name="gridLayout_8">
        <item row="2" column="0">
-        <widget class="QRadioButton" name="radioButton_endgane_notauto">
+        <widget class="QRadioButton" name="radioButton_game_over_manual">
          <property name="text">
           <string>Не завершается автоматически</string>
          </property>
@@ -389,7 +389,7 @@
        <item row="4" column="0">
         <layout class="QHBoxLayout" name="horizontalLayout_3">
          <item>
-          <widget class="QRadioButton" name="radioButton_endgame_Nanswer">
+          <widget class="QRadioButton" name="radioButton_game_over_answers">
            <property name="text">
             <string>До количества вопросов</string>
            </property>
@@ -412,7 +412,7 @@
           </spacer>
          </item>
          <item>
-          <widget class="QSpinBox" name="spinBox_endgame_Nanswer">
+          <widget class="QSpinBox" name="spinBox_game_over_answers">
            <property name="minimum">
             <number>1</number>
            </property>
@@ -426,7 +426,7 @@
        <item row="3" column="0">
         <layout class="QHBoxLayout" name="horizontalLayout_2">
          <item>
-          <widget class="QRadioButton" name="radioButton_endgame_Nscore">
+          <widget class="QRadioButton" name="radioButton_game_over_score">
            <property name="text">
             <string>До количества очков</string>
            </property>
@@ -446,7 +446,14 @@
           </spacer>
          </item>
          <item>
-          <widget class="QSpinBox" name="spinBox_endgame_Nscore"/>
+          <widget class="QSpinBox" name="spinBox_game_over_score">
+           <property name="minimum">
+            <number>1</number>
+           </property>
+           <property name="singleStep">
+            <number>1</number>
+           </property>
+          </widget>
          </item>
         </layout>
        </item>
@@ -495,7 +502,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QRadioButton" name="radioButton_always_one">
+        <widget class="QRadioButton" name="radioButton_answer_price_always_one_point">
          <property name="text">
           <string>Всегда 1 очко</string>
          </property>
@@ -505,7 +512,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QRadioButton" name="radioButton_store_price">
+        <widget class="QRadioButton" name="radioButton_answer_price_store_unanswered">
          <property name="text">
           <string>Накапливается за не отвеченные вопросы</string>
          </property>
@@ -514,9 +521,9 @@
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout_7">
          <item>
-          <widget class="QRadioButton" name="radioButton_add_cost_answer">
+          <widget class="QRadioButton" name="radioButton_answer_price_custom">
            <property name="text">
-            <string>Указывать вручную</string>
+            <string>Указывать вручную:</string>
            </property>
           </widget>
          </item>
@@ -534,7 +541,17 @@
           </spacer>
          </item>
          <item>
-          <widget class="QSpinBox" name="spinBox_addcost_answer"/>
+          <widget class="QSpinBox" name="custom_answer_price">
+           <property name="minimum">
+            <number>1</number>
+           </property>
+           <property name="maximum">
+            <number>50</number>
+           </property>
+           <property name="singleStep">
+            <number>0</number>
+           </property>
+          </widget>
          </item>
         </layout>
        </item>
@@ -570,7 +587,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QRadioButton" name="radioButton_draw_choice">
+        <widget class="QRadioButton" name="radioButton_draw_manual">
          <property name="text">
           <string>Бросать жребий вручную</string>
          </property>
@@ -599,7 +616,7 @@
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_22">
        <item>
-        <widget class="QLabel" name="label_score_group_2">
+        <widget class="QLabel" name="label_score_group">
          <property name="font">
           <font>
            <pointsize>13</pointsize>
@@ -612,7 +629,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QRadioButton" name="radioButton_score_auto_2">
+        <widget class="QRadioButton" name="radioButton_score_auto">
          <property name="text">
           <string>Вёдётся автоматически</string>
          </property>
@@ -622,7 +639,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QRadioButton" name="radioButton_score_not_2">
+        <widget class="QRadioButton" name="radioButton_score_not">
          <property name="text">
           <string>Не ведётся</string>
          </property>
@@ -663,14 +680,14 @@
          <item>
           <layout class="QVBoxLayout" name="verticalLayout_13">
            <item>
-            <widget class="QCheckBox" name="checkBox_score_fine_2">
+            <widget class="QCheckBox" name="checkBox_score_fee">
              <property name="text">
               <string>Неверный ответ штрафуется</string>
              </property>
             </widget>
            </item>
            <item>
-            <widget class="QCheckBox" name="checkBox_score_clear_2">
+            <widget class="QCheckBox" name="checkBox_score_clear">
              <property name="text">
               <string>Сбрасывать в начале раунда</string>
              </property>
@@ -806,7 +823,7 @@
                 </widget>
                </item>
                <item>
-                <widget class="QSpinBox" name="spinBox_duration_ignore_time_button">
+                <widget class="QSpinBox" name="spinBox_ignore_time_button_duration">
                  <property name="minimum">
                   <number>3</number>
                  </property>
@@ -917,14 +934,14 @@
            <item>
             <layout class="QHBoxLayout" name="horizontalLayout_6">
              <item>
-              <widget class="QCheckBox" name="checkBox_falsestart_block_team_button">
+              <widget class="QCheckBox" name="checkBox_falsestart_temporery_block_team_button">
                <property name="text">
-                <string>Штраф - Блокировка кнопки на </string>
+                <string>Штраф - блокировка кнопки на </string>
                </property>
               </widget>
              </item>
              <item>
-              <widget class="QSpinBox" name="spinBox_falsestart_duration_block_team_button">
+              <widget class="QSpinBox" name="spinBox_falsestart_block_team_button_duration">
                <property name="minimum">
                 <number>5</number>
                </property>
@@ -942,32 +959,6 @@
              </item>
              <item>
               <spacer name="horizontalSpacer_22">
-               <property name="orientation">
-                <enum>Qt::Horizontal</enum>
-               </property>
-               <property name="sizeHint" stdset="0">
-                <size>
-                 <width>40</width>
-                 <height>20</height>
-                </size>
-               </property>
-              </spacer>
-             </item>
-             <item>
-              <spacer name="horizontalSpacer_24">
-               <property name="orientation">
-                <enum>Qt::Horizontal</enum>
-               </property>
-               <property name="sizeHint" stdset="0">
-                <size>
-                 <width>40</width>
-                 <height>20</height>
-                </size>
-               </property>
-              </spacer>
-             </item>
-             <item>
-              <spacer name="horizontalSpacer_14">
                <property name="orientation">
                 <enum>Qt::Horizontal</enum>
                </property>
@@ -1003,7 +994,7 @@
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_4">
        <item>
-        <widget class="QCheckBox" name="checkBox_keep_game_protocol">
+        <widget class="QCheckBox" name="checkBox_record_game_protocol">
          <property name="text">
           <string>Вести протокол игры</string>
          </property>
