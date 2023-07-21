@@ -639,13 +639,6 @@
         </widget>
        </item>
        <item>
-        <widget class="QRadioButton" name="radioButton_score_not">
-         <property name="text">
-          <string>Не ведётся</string>
-         </property>
-        </widget>
-       </item>
-       <item>
         <layout class="QHBoxLayout" name="horizontalLayout_15">
          <item>
           <layout class="QVBoxLayout" name="verticalLayout_15">
@@ -726,6 +719,13 @@
           </layout>
          </item>
         </layout>
+       </item>
+       <item>
+        <widget class="QRadioButton" name="radioButton_score_not">
+         <property name="text">
+          <string>Не ведётся</string>
+         </property>
+        </widget>
        </item>
       </layout>
      </widget>
