@@ -1,7 +1,7 @@
 # Docs and future updrades
 qml/
 project_structure.txt
-
+*.log
 # Auto generated PyQt files
 *_ui.py
 
@@ -13,6 +13,7 @@ venv/
 
 # Auto generated folders and files
 .idea/
+.vscode/
 .DS_Store
 
 
