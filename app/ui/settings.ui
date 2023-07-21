@@ -936,7 +936,7 @@
              <item>
               <widget class="QCheckBox" name="checkBox_falsestart_temporery_block_team_button">
                <property name="text">
-                <string>Штраф - блокировка кнопки на </string>
+                <string>Временно на </string>
                </property>
               </widget>
              </item>
