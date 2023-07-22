@@ -2,8 +2,12 @@
 qml/
 project_structure.txt
 *.log
+
 # Auto generated PyQt files
 *_ui.py
+
+# Tests
+database_test.py
 
 # Virtual environments
 .env
@@ -14,6 +18,7 @@ venv/
 # Auto generated folders and files
 .idea/
 .vscode/
+*__pycache__/
 .DS_Store
 
 
