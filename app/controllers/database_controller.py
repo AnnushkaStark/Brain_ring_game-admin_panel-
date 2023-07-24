@@ -19,7 +19,7 @@ excel_file = 'app/database/questions_template.xlsx'    # Имя файла-ша�
 # -------------------------- Запросы ------------------------ #
 query_add_single_question = '''INSERT INTO questions (question, answer) VALUES (?, ?)'''     # Запрос на добавление записи в БД
 query_get_all_questions = '''SELECT * FROM questions'''
-query_get_single_question = '''SELECT question, answer FROM questions WHERE question LIKE ? COLLATE NOCASE OR answer LIKE ? COLLATE NOCASE'''
+query_get_single_question = '''SELECT question, answer FROM questions WHERE question LIKE ? OR answer LIKE ?'''
 query_update_question = '''UPDATE questions SET question = ?, answer = ? WHERE id = ?'''
 query_delete_question = ''' '''
 
@@ -61,17 +61,17 @@ def get_all_questions():
 # ----------------------------------------------------------- #
 
 def get_single_question(text: str):
-    ''' Функция возвращает один вопрос из базы данных '''
+    ''' Функция возвращает из базы данных один вопрос, в котором есть соответствующий текст'''
     log.debug("==> get_single_question() - функция вызвана.\n")
     with get_connection() as conn:
         try:
-            result = conn.cursor().execute(query_get_single_question, ('%' + text + '%', '%' + text + '%')).fetchall()
+            result = conn.cursor().execute(query_get_single_question, ('%' + text + '%', '%' + text + '%')).fetchone()
             if result:
                 log.debug("<== get_single_question() - конец выполнения.\n")
                 return result
             else:
                 log.warning("<== Вопрос (ответ) не найден в БД.\n")
-                return 0, 0     # WARNING - исправить на случай если вопросы не найдены.
+                # WARNING - исправить на случай если вопросы не найдены, чтобы не было ошибки
         except Exception as e:
             log.warning(f"<== Не удалось получить вопрос: {e}\n")
         
