@@ -122,8 +122,8 @@ def add_questions_from_excel(file):
         
 # ----------------------------------------------------------- #
 
-def update_question(question_id, new_question, new_answer):
-    '''Эта функция обновляет вопрос '''
+def update_question(question_id: int, new_question: str, new_answer: str):
+    ''' Функция изменяет текст вопроса и ответа для вопроса с идентификатором question_id'''
     with get_connection() as conn:
         conn.cursor().execute('UPDATE questions SET question = ?, answer = ? WHERE id == ?', (new_question, new_answer, question_id))
 
