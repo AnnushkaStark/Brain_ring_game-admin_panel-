@@ -154,57 +154,23 @@ def get_answer(update_answer):
         return result
     else:
         return 'Ответ в базе не найден'
-    
 
-new_question, new_answer  = '', ''
-
-def update_question(update_question, update_answer):
+def update_question(new_question, new_answer):
     '''Эта функция обновляет вопрос '''
     with get_connection() as conn:
-        cursor = conn.cursor()
-        cursor.execute('UPDATE questions SET вопрос,  WHERE вопрос == update_question',(new_question))
-        conn.commit()
+        conn.cursor().execute('UPDATE questions SET вопрос, WHERE вопрос == update_question', (new_question))
 
-def update_answer():
-    '''Эта функция обновляет ответ'''
 
+def delete_question(delete_question_id):
+    ''' Функция удаляет строку с поиском по вопросу или ответу'''
     with get_connection() as conn:
-        cursor = conn.cursor()
-        cursor.execute('UPDATE questions SET answer,  WHERE answer == update_answer', (new_answer))
-        conn.commit()
-        cursor.close()
-
-def delete_question(del_question):
-    '''Эта функция удаляет строку с поиском по вопросу'''
-    conn = sql.connect('BrainRing.db')
-    cursor = conn.cursor()
-    cursor.execute('DELETE FROM questions WHERE вопрос LIKE del_question')  # Проверяем наличие строки  в таблице
-    row = cursor.fetchone()
-    if row is None:
-        print('Вопрос не найден в базе данных')
-    else:
-        cursor.execute("DELETE FROM questions WHERE вопрос LIKE del_question")  # Удаляем строку
-        conn.commit()
+        # Проверяем наличие строки  в таблице
+        row = conn.cursor().execute('DELETE FROM questions WHERE id == ?', (delete_question_id)).fetchone()
+        if row is None:
+            print('Вопрос не найден в базе данных')
+        else:
+            conn.cursor().execute("DELETE FROM questions WHERE вопрос LIKE ?", (delete_question_id))  # Удаляем строку
         print('Строка успешно удалена')
-    cursor.close()
-    conn.close()
-
-def delete_answer(del_answer):
-    '''Эта функция удаляет строку с поиском по ответу'''
-    conn = sql.connect('BrainRing.db')
-    cursor = conn.cursor()
-    cursor.execute('DELETE FROM questions WHERE ответ LIKE del_answer') #Проверяем наличие строки  в таблице
-    row = cursor.fetchone()
-    if row is None:
-        print('Ответ не найден в базе данных')
-    else:
-        cursor.execute("DELETE FROM questions WHERE ответ LIKE del_answer") #Удаляем строку
-        conn.commit()
-        print('Строка успешно удалена')
-    cursor.close()
-    conn.close()
-
-
-# name = input() #введите название базы данных
+        conn.cursor().execute('DELETE FROM questions WHERE id == ?', (delete_question_id))
 
 log.debug("===== Конец выполнения файла database_controller.py. =====")
