@@ -2,6 +2,7 @@
 qml/
 project_structure.txt
 *.log
+tests/
 
 # Auto generated PyQt files
 *_ui.py
