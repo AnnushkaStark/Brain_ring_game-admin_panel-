@@ -143,13 +143,11 @@ def edit_question(question: str):
 '''Функция выбирает вопрос для обновления из базы данных'''
 
 
-'''Функция выбирает ответ для обновления'''
+
 def get_answer(update_answer):
-    conn = sql.connect('BrainRing.db')
-    cursor = conn.cursor()
-    cursor.execute('SELECT ответ FROM questions WHERE ответ == update_answer')
-    result = cursor.fetchone()
-    conn.close()
+    '''Функция выбирает ответ для обновления'''
+    with get_connection() as conn:
+        result = conn.cursor().execute('SELECT answer FROM questions WHERE answer == ?', (update_answer)).fetchone()
     if result is not None:
         return result
     else:
