@@ -19,120 +19,114 @@ excel_file = 'app/database/questions_template.xlsx'    # Имя файла-ша�
 # -------------------------- Запросы ------------------------ #
 query_add_single_question = '''INSERT INTO questions (question, answer) VALUES (?, ?)'''     # Запрос на добавление записи в БД
 query_get_all_questions = '''SELECT * FROM questions'''
-query_get_single_question = ''' '''
+query_get_single_question = '''SELECT question, answer FROM questions WHERE question LIKE ? COLLATE NOCASE OR answer LIKE ? COLLATE NOCASE'''
+query_update_question = '''UPDATE questions SET question = ?, answer = ? WHERE id = ?'''
 query_delete_question = ''' '''
-query_update_question = ''' '''
+
 # -------------------------- ======= ------------------------ #
 conn = None                         # Экземпляр соединения с БД
-
+count_added_questions = 0           # Счётчик добавленных из excel-файла вопросов
 # -------------------------- Функции ------------------------ #
 
 def get_connection():
     ''' Функция осуществляет подключение к базе данных database '''
-    log.debug("==> get_connection() - вызвана функция")
+    log.debug("==> get_connection() - функция вызвана.\n")
     global conn
     if not conn:
         try:
             conn = sql.connect(database)
         except Exception as e:
-            log.error("<== Не удалось подключиться к БД:", e)
+            log.error(f"<== Не удалось подключиться к БД: {e}\n")
             raise
         finally:
-            log.debug("<== Соединение с БД создано")
+            log.debug("<== Соединение с БД создано.\n")
     else:
-        log.debug("<== Соединение с БД уже существует")
+        log.debug("<== Соединение с БД уже существует.\n")
     return conn
-
-    
-    
 
 # ----------------------------------------------------------- #
 
 def get_all_questions():
-    '''функция выводит все строки из базы данных'''
-    log.debug("==> get_all_questions() - функция вызвана")
+    ''' Функция возвращает все вопросы из базы данных '''
+    log.debug("==> get_all_questions() - функция вызвана.\n")
     try:
         with get_connection() as conn:
             result = conn.cursor().execute(query_get_all_questions).fetchall()
             log.debug(f"Вопросов из БД получено - {len(result)} шт.")
-        log.debug("Связь с БД закрыта")
-        log.debug("<== get_all_questions() - конец выполнения")
+        log.debug("<== get_all_questions() - конец выполнения. Связь с БД закрыта.\n")
         return result
     except Exception as e:
-        log.error("<== Не удалось получить вопросы из базы данных:", e)
+        log.error(f"<== Не удалось получить вопросы из базы данных: {e}\n")
+
+# ----------------------------------------------------------- #
+
+def get_single_question(text: str):
+    ''' Функция возвращает один вопрос из базы данных '''
+    log.debug("==> get_single_question() - функция вызвана.\n")
+    with get_connection() as conn:
+        try:
+            result = conn.cursor().execute(query_get_single_question, ('%' + text + '%', '%' + text + '%')).fetchall()
+            if result:
+                log.debug("<== get_single_question() - конец выполнения.\n")
+                return result
+            else:
+                log.warning("<== Вопрос (ответ) не найден в БД.\n")
+                return 0, 0     # WARNING - исправить на случай если вопросы не найдены.
+        except Exception as e:
+            log.warning(f"<== Не удалось получить вопрос: {e}\n")
+        
     
 # ----------------------------------------------------------- #
-# ----------------------------------------------------------- #
+
+def add_single_question(question, answer):
+    ''' Добавление одного вопроса'''
+    log.debug("> add_single_question() - функция вызвана.\n")
+    global count_added_questions
+    with get_connection() as conn:
+        cursor = conn.cursor()
+        try: # Пытаемся выполнить запрос по добавлению одного вопроса в БД
+            if question == None:
+                log.warning("< Поле 'Вопрос' не может быть пустым!\n")
+            elif answer == None:
+                log.warning("< Поле 'Ответ' не может быть пустым!\n")
+            else:
+                cursor.execute(query_add_single_question, (question, answer))
+                count_added_questions += 1
+                log.debug("< add_single_question() - конец выполнения.\n")
+        except sql.IntegrityError as sql_error:
+            log.warning(f"< Вопрос уже существует в базе данных: {sql_error.args}\n")
+        except Exception as e:
+            log.warning(f"< Ошибка при добавлении вопроса: {e}\n")
+
 # ----------------------------------------------------------- #
 
 def add_questions_from_excel(file):
-    ''' Добавление вопросов группой из Excel-файла. '''
-    log.debug("==> add_questions_from_excel() - функция вызвана")
+    ''' Добавление вопросов из Excel-файла. '''
+    log.debug("==> add_questions_from_excel() - функция вызвана.\n")
+    global count_added_questions
     # ДОБАВИТЬ: проверку расширения файла excel; продумать, на каком этапе её лучше делать
 
     try:    # Попытка открыть файл
         workbook = load_workbook(filename = file)  # Загружаем Excel-файл
         sheet = workbook['page']    # Указываем название страницы (можно ли переделать на индекс?)'
 
-        count_added_questions = 0 # Счётчик добавленных вопросов
-        with get_connection() as conn:
-            cursor = conn.cursor()
-            if sheet["A1"].value == "Вопрос" and sheet["B1"].value == "Ответ":      # Проверка на соответствие загружаемого файла шаблону
-                for row in sheet.iter_rows(min_row=2, values_only=True):
-                    log.debug(f"Обрабатывается строка: {row}")
-                    if row[0] == None:
-                        log.warning("Поле 'Вопрос' не может быть пустым!")
-                        continue
-                    elif row[1] == None:
-                        log.warning("Поле 'Ответ' не может быть пустым!")
-                        continue
-                    else:
-                        try:
-                            cursor.execute(query_add_single_question, (row[0], row[1]))
-                        except sql.IntegrityError as sql_error:
-                            log.warning(f"Вопрос уже существует в базе данных: {sql_error.args}")
-                            continue
-                        except Exception as e:
-                            log.warning(f"Ошибка при добавлении вопроса: {e}")
-                            continue
-                    count_added_questions += 1
-            else:
-                log.error("<== Попытка использовать файл, не соответствующий шаблону!")
-    except Exception as e:
-        log.error("<== Невозможно открыть excel-файл:", e)
-    finally:
-        log.debug(f"<== add_question_from_excel() - конец выполнения. Добавлено {count_added_questions}/{sheet.max_row - 1} вопросов.") 
-# ----------------------------------------------------------- #
-# ----------------------------------------------------------- #
-# ----------------------------------------------------------- #
-
-def add_single_question(database: str, question: str, answer: str):
-    ''' Добавление вопросов по одному по одному.'''
-
-    connection = get_connection()   # Подключаемся к БД
-    cursor = connection.cursor()
-    question, answer = input("Введите вопрос: "), input("Введите ответ: ") # Строка временная, не нужна при работе через интерфейс
-
-    try:
-        if question != None and answer != None:
-            cursor.execute(query_add_single_question, (question, answer))   # Непосредственно выполнение запроса к БД
-            print('OK')
+        count_added_questions = 0 # Обнуление добавленных вопросов
+        if sheet["A1"].value == "Вопрос" and sheet["B1"].value == "Ответ":      # Проверка на соответствие загружаемого файла шаблону
+            for row in sheet.iter_rows(min_row=2, values_only=True):
+                log.debug(f"Обрабатывается строка: {row}")
+                add_single_question(row[0], row[1])
+            log.debug(f"<== add_question_from_excel() - конец выполнения. Добавлено {count_added_questions}/{sheet.max_row - 1} вопросов.\n") 
         else:
-            raise sql.IntegrityError
-    except sql.IntegrityError:
-        print('Вопрос или ответ не может быть пустым!')
-    except OSError as e:
-        print(e)
-        print('Такой вопрос уже существует!')
-        print(f'Вопрос: {question}')
-        print(f'Вопрос: {answer}')
-        print()
+            log.error("<== Попытка использовать файл, не соответствующий шаблону!\n")
+    except Exception as e:
+        log.error(f"<== Невозможно открыть excel-файл: {e}\n")
+        
+# ----------------------------------------------------------- #
 
-    print('Уникальные вопросы добавлены')
+# ----------------------------------------------------------- #
+# ----------------------------------------------------------- #
+# ----------------------------------------------------------- #
 
-    # Закрываем соединение с БД
-    connection.commit()
-    connection.close()
 
 # def delete_question(question: str):
 #     pass
@@ -146,25 +140,8 @@ def edit_question(question: str):
 
 ''' NEED REVIEW '''
 
-
-
-
-# update_question = input()     #введите вопрос который хотите обновить
-# update_answer = input() #введите ответ который хотите обновить
-# conn = sql.connect('BrainRing.db')
-#cursor = conn.cursor()
-
 '''Функция выбирает вопрос для обновления из базы данных'''
-def get_question(update_question):
-    conn = sql.connect('BrainRing.db')
-    cursor = conn.cursor()
-    cursor.execute('SELECT вопрос FROM questions WHERE вопрос == update_question')
-    result = cursor.fetchone()
-    if result is not None:
-        return result
-    else:
-        return 'Вопрос в базе не найден'
-    conn.close
+
 
 '''Функция выбирает ответ для обновления'''
 def get_answer(update_answer):
