@@ -155,10 +155,10 @@ def get_answer(update_answer):
     else:
         return 'Ответ в базе не найден'
 
-def update_question(new_question, new_answer):
+def update_question(question_id, new_question, new_answer):
     '''Эта функция обновляет вопрос '''
     with get_connection() as conn:
-        conn.cursor().execute('UPDATE questions SET вопрос, WHERE вопрос == update_question', (new_question))
+        conn.cursor().execute('UPDATE questions SET question = ?, answer = ? WHERE id == ?', (new_question, new_answer, question_id))
 
 
 def delete_question(delete_question_id):
@@ -169,8 +169,7 @@ def delete_question(delete_question_id):
         if row is None:
             print('Вопрос не найден в базе данных')
         else:
-            conn.cursor().execute("DELETE FROM questions WHERE вопрос LIKE ?", (delete_question_id))  # Удаляем строку
+            conn.cursor().execute("DELETE FROM questions WHERE id == ?", (delete_question_id))  # Удаляем строку
         print('Строка успешно удалена')
-        conn.cursor().execute('DELETE FROM questions WHERE id == ?', (delete_question_id))
 
 log.debug("===== Конец выполнения файла database_controller.py. =====")
