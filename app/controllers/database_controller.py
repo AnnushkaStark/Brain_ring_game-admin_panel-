@@ -75,7 +75,6 @@ def get_single_question(text: str):
         except Exception as e:
             log.warning(f"<== Не удалось получить вопрос: {e}\n")
         
-    
 # ----------------------------------------------------------- #
 
 def add_single_question(question, answer):
@@ -123,41 +122,12 @@ def add_questions_from_excel(file):
         
 # ----------------------------------------------------------- #
 
-# ----------------------------------------------------------- #
-# ----------------------------------------------------------- #
-# ----------------------------------------------------------- #
-
-
-# def delete_question(question: str):
-#     pass
-
-def edit_question(question: str):
-    pass
-
-
-
-
-
-''' NEED REVIEW '''
-
-'''Функция выбирает вопрос для обновления из базы данных'''
-
-
-
-def get_answer(update_answer):
-    '''Функция выбирает ответ для обновления'''
-    with get_connection() as conn:
-        result = conn.cursor().execute('SELECT answer FROM questions WHERE answer == ?', (update_answer)).fetchone()
-    if result is not None:
-        return result
-    else:
-        return 'Ответ в базе не найден'
-
 def update_question(question_id, new_question, new_answer):
     '''Эта функция обновляет вопрос '''
     with get_connection() as conn:
         conn.cursor().execute('UPDATE questions SET question = ?, answer = ? WHERE id == ?', (new_question, new_answer, question_id))
 
+# ----------------------------------------------------------- #
 
 def delete_question(delete_question_id):
     ''' Функция удаляет строку с поиском по вопросу или ответу'''
@@ -169,5 +139,22 @@ def delete_question(delete_question_id):
         else:
             conn.cursor().execute("DELETE FROM questions WHERE id == ?", (delete_question_id))  # Удаляем строку
         print('Строка успешно удалена')
+        
+# ----------------------------------------------------------- #
+
+
+# def delete_question(question: str):
+#     pass
+
+''' NEED REVIEW '''
+
+def get_answer(update_answer):
+    '''Функция выбирает ответ для обновления'''
+    with get_connection() as conn:
+        result = conn.cursor().execute('SELECT answer FROM questions WHERE answer == ?', (update_answer)).fetchone()
+    if result is not None:
+        return result
+    else:
+        return 'Ответ в базе не найден'
 
 log.debug("===== Конец выполнения файла database_controller.py. =====")
