@@ -124,37 +124,32 @@ def add_questions_from_excel(file):
 
 def update_question(question_id: int, new_question: str, new_answer: str):
     ''' Функция изменяет текст вопроса и ответа для вопроса с идентификатором question_id'''
+    log.debug("> update_question() - функция вызвана.\n")
     with get_connection() as conn:
-        conn.cursor().execute('UPDATE questions SET question = ?, answer = ? WHERE id == ?', (new_question, new_answer, question_id))
-
-# ----------------------------------------------------------- #
-
-def delete_question(delete_question_id):
-    ''' Функция удаляет строку с поиском по вопросу или ответу'''
-    with get_connection() as conn:
-        # Проверяем наличие строки  в таблице
-        row = conn.cursor().execute('DELETE FROM questions WHERE id == ?', (delete_question_id)).fetchone()
-        if row is None:
-            print('Вопрос не найден в базе данных')
-        else:
-            conn.cursor().execute("DELETE FROM questions WHERE id == ?", (delete_question_id))  # Удаляем строку
-        print('Строка успешно удалена')
+        try: # Пытаемся выполнить запрос по изменению вопроса в БД
+            if new_question == None or new_question == '':
+                log.warning("< Поле 'Вопрос' не может быть пустым!\n")
+            elif new_answer == None or new_answer == '':
+                log.warning("< Поле 'Ответ' не может быть пустым!\n")
+            else:
+                conn.cursor().execute('UPDATE questions SET question = ?, answer = ? WHERE id == ?', (new_question, new_answer, question_id))
+                log.debug(f'< Вопрос id:{question_id} успешно изменён.\n')
+        except Exception as e:
+            log.warning(f"< Ошибка при изменении вопроса: {e}\n")
         
 # ----------------------------------------------------------- #
 
-
-# def delete_question(question: str):
-#     pass
-
-''' NEED REVIEW '''
-
-def get_answer(update_answer):
-    '''Функция выбирает ответ для обновления'''
+def delete_question(question_id):
+    ''' Функция удаляет строку с поиском по вопросу или ответу'''
+    log.debug("> delete_question() - функция вызвана.\n")
     with get_connection() as conn:
-        result = conn.cursor().execute('SELECT answer FROM questions WHERE answer == ?', (update_answer)).fetchone()
-    if result is not None:
-        return result
-    else:
-        return 'Ответ в базе не найден'
+        # Проверяем наличие строки  в таблице
+        try:
+            conn.cursor().execute("DELETE FROM questions WHERE id == ?", (question_id,))  # Удаляем строку
+            log.debug(f'< Вопрос id={question_id} успешно удалён.\n')
+        except Exception as e:
+            log.error(f"< Ошибка при удалении вопроса: {e}\n")
+        
+# ----------------------------------------------------------- #
 
 log.debug("===== Конец выполнения файла database_controller.py. =====")
