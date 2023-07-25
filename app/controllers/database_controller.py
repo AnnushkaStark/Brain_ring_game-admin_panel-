@@ -13,8 +13,8 @@ log.basicConfig(filename='brainring.log', level=log.DEBUG,
                 format='%(asctime)s - %(levelname)s - %(message)s')
 log.info("========== Файл database_controller.py ==========")
 
-database = 'app/database/brainring.db'           # Имя БД
-excel_file = 'app/database/questions_template.xlsx'    # Имя файла-шаблона, при загрузке через интерфейс - указывать путь выбранному файлу
+database = 'app/assets/database/brainring.db'           # Имя БД
+excel_file = 'app/assets/database/questions_template.xlsx'    # Имя файла-шаблона, при загрузке через интерфейс - указывать путь выбранному файлу
 
 # -------------------------- Запросы ------------------------ #
 query_add_single_question = '''INSERT INTO questions (question, answer) VALUES (?, ?)'''     # Запрос на добавление записи в БД

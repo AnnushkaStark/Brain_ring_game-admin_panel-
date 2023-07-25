@@ -8,7 +8,8 @@ tests/
 *_ui.py
 
 # Tests
-database_test.py
+*test*
+*demo*
 
 # Virtual environments
 .env
