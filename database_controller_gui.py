@@ -60,6 +60,7 @@ class Controller(Ui_MainWindow,QMainWindow):
 # ----------------------------------------------------------- #
 
     def get_all_questions(self):
+        '''Функция выводит все вопросы и ответы в таблицу'''
         with sql.connect(self.database ) as conn:
             result = conn.cursor().execute(self.query_get_all_questions).fetchall()
             self.tableWidget.setRowCount(len(result))
@@ -73,15 +74,14 @@ class Controller(Ui_MainWindow,QMainWindow):
 # ----------------------------------------------------------- #
 
     def get_single_question(self):
-        ''' Функция возвращает из базы данных один вопрос, в котором есть соответствующий текст'''
+        ''' Функция возвращает из базы данных один вопрос, в котором есть соответствующий текст эта функция не привязана к виджетам'''
         log.debug("==> get_single_question() - функция вызвана.\n")
         with sql.connect(self.database) as conn:
-            found_answer =self.foundAns.text()
+            found_answer =self.foundAns.text() #Проверяем ввел ли пользователь данные
             found_question = self.foungQ.text()
             result = conn.cursor().execute(self.query_get_all_questions).fetchall()
             for row in result:
-                if found_question == row[1] or found_answer == row[2]:
-                    log.debug("<== get_single_question() - конец выполнения.\n")
+                if found_question == row[1] or found_answer == row[2]: #проверяем наличие вопроса в базе
                     print('Вопрос найден')
                 else:
                     log.warning("<== Вопрос (ответ) не найден в БД.\n")
@@ -99,7 +99,7 @@ class Controller(Ui_MainWindow,QMainWindow):
             cursor = conn.cursor()
             new_question =  self.new_qwestion.text()
             new_answer = self.new_answer.text()
-            if new_question.strip() and new_answer.strip():
+            if new_question.strip() and new_answer.strip(): #Проверяем ввел ли пользоваетель данные
                 cursor.execute(self.query_add_single_question, (new_question, new_answer))
                 self.count_added_questions += 1
                 result =  QMessageBox()
@@ -146,7 +146,7 @@ class Controller(Ui_MainWindow,QMainWindow):
         log.debug("> update_question() - функция вызвана.\n")
         with sql.connect(self.database) as conn:
             try: # Пытаемся выполнить запрос по изменению вопроса в БД
-                upd_question= self.Update_question.text()
+                upd_question= self.Update_question.text() #Проверяем ввел ли пользователь данные
                 upd_answer =  self.Update_answer_2.text()
                 found_question = self.foungQ.text()
                 found_answer = self.foundAns.text()
