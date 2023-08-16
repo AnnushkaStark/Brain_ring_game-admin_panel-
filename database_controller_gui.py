@@ -49,9 +49,14 @@ class Controller(Ui_MainWindow,QMainWindow):
         log.debug("==> get_connection() - функция вызвана.\n")
         conn = sql.connect(self.database)
         if conn:
-            print ('Соединение создано')
+            result =  QMessageBox()
+            result.setText('Cоединение создано')
+            result.exec()
         else:
-            print('Не удалось подключиться к базе')
+            result =  QMessageBox()
+            result.setText('Не удалось подключиться к базе')
+            result.exec()
+           
 # ----------------------------------------------------------- #
 
     def get_all_questions(self):
@@ -97,11 +102,15 @@ class Controller(Ui_MainWindow,QMainWindow):
             if new_question.strip() and new_answer.strip():
                 cursor.execute(self.query_add_single_question, (new_question, new_answer))
                 self.count_added_questions += 1
-                print('Вопрос добавлен')
+                result =  QMessageBox()
+                result.setText('Вопрос добавлен')
+                result.exec()
                    
             else:
                 log.warning("< Поле  не может быть пустым!\n")
-                print('Поля не заполнены')
+                result =  QMessageBox()
+                result.setText('Поля не заполнены')
+                result.exec()
                 log.debug("< add_single_question() - конец выполнения.\n")
             
 # ----------------------------------------------------------- #
@@ -112,21 +121,24 @@ class Controller(Ui_MainWindow,QMainWindow):
         self.count_added_questions = 0
         # ДОБАВИТЬ: проверку расширения файла excel; продумать, на каком этапе её лучше делать
 
-        try:    # Попытка открыть файл
-            workbook = load_workbook(self.excel_file)  # Загружаем Excel-файл
-            sheet = workbook['page']    # Указываем название страницы (можно ли переделать на индекс?)'
+          # Попытка открыть файл
+        workbook = load_workbook(self.excel_file)  # Загружаем Excel-файл
+        sheet = workbook['page']    # Указываем название страницы (можно ли переделать на индекс?)'
            
-            self.count_added_questions = 0 # Обнуление добавленных вопросов
-            if sheet["A1"].value == "Вопрос" and sheet["B1"].value == "Ответ":      # Проверка на соответствие загружаемого файла шаблону
-                for row in sheet.iter_rows(min_row=2, values_only=True):
-                    log.debug(f"Обрабатывается строка: {row}")
-                    self.add_single_question(row[0], row[1])
-                log.debug(f"<== add_question_from_excel() - конец выполнения. Добавлено {self.count_added_questions}/{sheet.max_row - 1} вопросов.\n") 
-            else:
-                log.error("<== Попытка использовать файл, не соответствующий шаблону!\n")
-        except Exception as e:
-            log.error(f"<== Невозможно открыть excel-файл: {e}\n")
-
+        self.count_added_questions = 0 # Обнуление добавленных вопросов
+        if sheet["A1"].value == "Вопрос" and sheet["B1"].value == "Ответ":
+            for row in sheet.iter_rows(min_row=2, values_only=True):
+                with sql.connect(self.database) as conn:
+                    cursor = conn.cursor()
+                    cursor.execute(self.query_add_single_question, (row[0], row[1]))
+            result =  QMessageBox()
+            result.setText('Вопросы добавлены')
+            result.exec()
+        else:
+            result =  QMessageBox()
+            result.setText('Файл не соответствует формату')
+            result.exec()
+                   
 # ----------------------------------------------------------- #
 
     def update_question(self):
@@ -143,11 +155,20 @@ class Controller(Ui_MainWindow,QMainWindow):
                     if result:
                         conn.cursor().execute(self.query_update_question,(upd_question,found_question))
                         conn.cursor().execute(self.query_update_answer,(upd_answer,found_answer))
-                        print('Вопрос\ответ изменен')
+                        result =  QMessageBox()
+                        result.setText('Вопрос\ответ изменен')
+                        result.exec()
+                        
                     else:
-                        print('Ошибка при изменении вопроса')
+                        result =  QMessageBox()
+                        result.setText('Ошибка при изменении вопроса')
+                        result.exec()
+                        
                 else:
-                    print('Изменяемый вопрос  не найден')
+                    result =  QMessageBox()
+                    result.setText('Изменяемый вопрос  не найден')
+                    result.exec()
+                   
             except Exception as e:
                 log.warning(f"< Ошибка при изменении вопроса: {e}\n")
 
@@ -167,8 +188,9 @@ class Controller(Ui_MainWindow,QMainWindow):
                     res = 'вопрос успешно удален'
                else:
                     res = 'Заполнены не все поля или вопрос никогда не сущестовал'
-            print(res)       
-            
+            result =  QMessageBox()
+            result.setText(res)
+            result.exec()
         
 # ----------------------------------------------------------- #
 
