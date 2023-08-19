@@ -7,12 +7,7 @@ from PyQt6 import *
 import sqlite3 as sql
 from openpyxl import load_workbook
 import logging as log
-from PyQt6.QtSql import  QSqlDatabase, QSqlQuery
-from PyQt6.QtCore import *
 from dataface import *
-
-
-
 
 class Controller(Ui_MainWindow,QMainWindow):
     def __init__(self):
@@ -78,7 +73,7 @@ class Controller(Ui_MainWindow,QMainWindow):
             log.debug("<== get_all_questions() - конец выполнения. Связь с БД закрыта.\n")   
             for row in range(len(result)):
                 for column in range(len(result[row])):
-                    item = QTableWidgetItem(result[row][column])
+                    item = QTableWidgetItem(str(result[row][column]))
                     self.tableWidget.setItem(row,column,item)
         except Exception as e:
             log.error(f"<== Не удалось получить вопросы из базы данных: {e}\n")
