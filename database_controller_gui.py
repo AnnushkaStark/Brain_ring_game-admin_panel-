@@ -8,6 +8,7 @@ import sqlite3 as sql
 from openpyxl import load_workbook
 import logging as log
 from dataface import *
+from question_creator_gui import Creator
 
 class Controller(Ui_MainWindow,QMainWindow):
     def __init__(self):
@@ -27,6 +28,8 @@ class Controller(Ui_MainWindow,QMainWindow):
         self.pushButton_select_all.clicked.connect(self.get_all_questions)
         self.lineEdit_delet_answer.text()
         self.pushButton_delete.clicked.connect(self.delete_question)
+        self.pushButton_question_wibdow.clicked.connect(self.open_questions_creator)
+        self.pushButton_Raiting_window.clicked.connect(self.open_raiting_window)
         self.count_added_questions = 0
         self.query_add_single_question = '''INSERT INTO questions (question, answer) VALUES (?, ?)'''     # Запрос на добавление записи в БД
         self.query_get_all_questions = '''SELECT * FROM questions'''
@@ -219,6 +222,15 @@ class Controller(Ui_MainWindow,QMainWindow):
                 log.error(f"< Ошибка при удалении вопроса: {e}\n")
         
 # ----------------------------------------------------------- #
+    def open_questions_creator(self):
+        '''Эта функция открывает окно генерирующее вопросы'''
+        self.question_creator = Creator()
+        self.question_creator.show()
+  
+
+
+    def open_raiting_window(self):
+        pass
 
 log.debug("===== Конец выполнения файла database_controller.py. =====")
 
