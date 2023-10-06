@@ -58,7 +58,32 @@ class Raiting(Ui_MainWindow,QMainWindow):
 
     def tournier(self):
         '''Эта функция выводит в таблицу рейтинг турнира'''
-        pass
+        try:
+            with sql.connect(self.database ) as conn:
+                result = conn.cursor().execute(self.qurry_tournier).fetchall()
+                self.tableWidget.setRowCount(len(result))
+                self.tableWidget.setColumnCount(len(result[0]))
+                for row in range(len(result)):
+                    for column in range(len(result[row])):
+                        item = QTableWidgetItem(str(result[row][column]))
+                        self.tableWidget.setItem(row,column,item)
+        except sql.IntegrityError:
+            result = QMessageBox()
+            result.setText('Error')
+            result.exec()
+        except sql.OperationalError:
+            result = QMessageBox()
+            result.setText('Error')
+            result.exec()
+        except TypeError:
+            result = QMessageBox()
+            result.setText('Error')
+            result.exec()
+        except ValueError:
+            result = QMessageBox()
+            result.setText('Error')
+            result.exec()
+       
     def change_raiting_single(self):
         '''Эта функция увеличивает рейтинг команды при победе в одиночной игре'''
 
