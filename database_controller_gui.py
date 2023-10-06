@@ -9,6 +9,7 @@ from openpyxl import load_workbook
 import logging as log
 from dataface import *
 from question_creator_gui import Creator
+from raiting_widow_gui import Raiting
 
 class Controller(Ui_MainWindow,QMainWindow):
     def __init__(self):
@@ -230,6 +231,11 @@ class Controller(Ui_MainWindow,QMainWindow):
 
 
     def open_raiting_window(self):
+        '''Эта функция открывает окно с рейтингами комманд'''
+        self.raiting = Raiting()
+        self.raiting.show()
+
+        
         pass
 
 log.debug("===== Конец выполнения файла database_controller.py. =====")

@@ -110,7 +110,7 @@ background-color: rgb(255, 85, 0);
 </string>
     </property>
     <property name="text">
-     <string>Одиночная игра</string>
+     <string>Одиночная игра    +1</string>
     </property>
    </widget>
    <widget class="QPushButton" name="pushButton_change_tourner">
@@ -128,7 +128,7 @@ background-color: rgb(255, 85, 0);
 </string>
     </property>
     <property name="text">
-     <string>Турнир</string>
+     <string>Турнир  +1</string>
     </property>
    </widget>
    <widget class="QLineEdit" name="lineEdit_single_team">
@@ -187,36 +187,6 @@ background-color: rgb(255, 85, 0);
     </property>
     <property name="text">
      <string>            Название команды</string>
-    </property>
-   </widget>
-   <widget class="QSpinBox" name="spinBox">
-    <property name="geometry">
-     <rect>
-      <x>250</x>
-      <y>430</y>
-      <width>121</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color: rgb(170, 255, 255);
-border-radius:10px</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_3">
-    <property name="geometry">
-     <rect>
-      <x>240</x>
-      <y>410</y>
-      <width>141</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">color: rgb(85, 255, 0);</string>
-    </property>
-    <property name="text">
-     <string>   Добавить количество</string>
     </property>
    </widget>
   </widget>

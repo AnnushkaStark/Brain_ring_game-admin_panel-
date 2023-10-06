@@ -17,7 +17,12 @@ class Creator(Ui_MainWindow,QMainWindow):
 
         self.spinBox_limit.setValue(0)
         self.pushButton_back_2.clicked.connect(self.question)
+        self.pushButton_submit.clicked.connect(self.submit)
         self.plainTextEdit.setPlainText('')
+    
+    def submit(self):
+        pass
+
 
 
     def question(self):

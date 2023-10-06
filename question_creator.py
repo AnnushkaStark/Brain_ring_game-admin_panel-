@@ -17,12 +17,12 @@ class Ui_MainWindow(object):
         self.centralwidget = QtWidgets.QWidget(parent=MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.widget = QtWidgets.QWidget(parent=self.centralwidget)
-        self.widget.setGeometry(QtCore.QRect(20, 30, 361, 271))
+        self.widget.setGeometry(QtCore.QRect(20, 10, 361, 271))
         self.widget.setStyleSheet("background-color: rgb(0, 85, 127);\n"
 "")
         self.widget.setObjectName("widget")
         self.spinBox_limit = QtWidgets.QSpinBox(parent=self.widget)
-        self.spinBox_limit.setGeometry(QtCore.QRect(130, 10, 111, 31))
+        self.spinBox_limit.setGeometry(QtCore.QRect(60, 20, 111, 31))
         self.spinBox_limit.setStyleSheet("background-color: rgb(170, 255, 255);\n"
 "border-radius: 10px;")
         self.spinBox_limit.setObjectName("spinBox_limit")
@@ -31,13 +31,17 @@ class Ui_MainWindow(object):
         self.pushButton_back_2.setStyleSheet("background-color: rgb(85, 255, 0);")
         self.pushButton_back_2.setObjectName("pushButton_back_2")
         self.label = QtWidgets.QLabel(parent=self.widget)
-        self.label.setGeometry(QtCore.QRect(90, 50, 181, 20))
+        self.label.setGeometry(QtCore.QRect(90, 60, 181, 20))
         self.label.setStyleSheet("color: rgb(170, 255, 0);")
         self.label.setObjectName("label")
         self.plainTextEdit = QtWidgets.QPlainTextEdit(parent=self.widget)
         self.plainTextEdit.setGeometry(QtCore.QRect(10, 100, 341, 71))
         self.plainTextEdit.setStyleSheet("background-color: rgb(170, 255, 255);")
         self.plainTextEdit.setObjectName("plainTextEdit")
+        self.pushButton_submit = QtWidgets.QPushButton(parent=self.widget)
+        self.pushButton_submit.setGeometry(QtCore.QRect(170, 20, 111, 31))
+        self.pushButton_submit.setStyleSheet("background-color: rgb(85, 255, 0);")
+        self.pushButton_submit.setObjectName("pushButton_submit")
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(parent=MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 404, 22))
@@ -55,6 +59,7 @@ class Ui_MainWindow(object):
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
         self.pushButton_back_2.setText(_translate("MainWindow", "Вопрос"))
         self.label.setText(_translate("MainWindow", "           Количество вопросов"))
+        self.pushButton_submit.setText(_translate("MainWindow", "Применить"))
 
 
 if __name__ == "__main__":

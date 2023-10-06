@@ -12,7 +12,7 @@ from PyQt6 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(664, 540)
+        MainWindow.setFixedSize(664, 540)
         MainWindow.setStyleSheet("background-color: rgb(0, 85, 127);")
         self.centralwidget = QtWidgets.QWidget(parent=MainWindow)
         self.centralwidget.setObjectName("centralwidget")
@@ -74,15 +74,6 @@ class Ui_MainWindow(object):
         self.label_2.setGeometry(QtCore.QRect(400, 430, 191, 16))
         self.label_2.setStyleSheet("color: rgb(0, 255, 0);")
         self.label_2.setObjectName("label_2")
-        self.spinBox = QtWidgets.QSpinBox(parent=self.centralwidget)
-        self.spinBox.setGeometry(QtCore.QRect(250, 430, 121, 41))
-        self.spinBox.setStyleSheet("background-color: rgb(170, 255, 255);\n"
-"border-radius:10px")
-        self.spinBox.setObjectName("spinBox")
-        self.label_3 = QtWidgets.QLabel(parent=self.centralwidget)
-        self.label_3.setGeometry(QtCore.QRect(240, 410, 141, 20))
-        self.label_3.setStyleSheet("color: rgb(85, 255, 0);")
-        self.label_3.setObjectName("label_3")
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(parent=MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 664, 22))
@@ -106,11 +97,10 @@ class Ui_MainWindow(object):
         item.setText(_translate("MainWindow", "Количество побед"))
         self.pushButton_Singe_Game.setText(_translate("MainWindow", "SingleGame"))
         self.pushButton_Toutnier.setText(_translate("MainWindow", "Tournier"))
-        self.pushButton_change_single_game.setText(_translate("MainWindow", "Одиночная игра"))
-        self.pushButton_change_tourner.setText(_translate("MainWindow", "Турнир"))
+        self.pushButton_change_single_game.setText(_translate("MainWindow", "Одиночная игра    +1"))
+        self.pushButton_change_tourner.setText(_translate("MainWindow", "Турнир  +1"))
         self.label.setText(_translate("MainWindow", "            Название команды"))
         self.label_2.setText(_translate("MainWindow", "            Название команды"))
-        self.label_3.setText(_translate("MainWindow", "   Добавить количество"))
 
 
 if __name__ == "__main__":
