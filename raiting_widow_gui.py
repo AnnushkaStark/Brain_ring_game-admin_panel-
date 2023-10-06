@@ -20,6 +20,8 @@ class Raiting(Ui_MainWindow,QMainWindow):
         self.qurry_tournier = '''SELECT ID, team_name, winners FROM tournier ORDER BY winners''' #этот запрос выводит рейтинг турнира
         self.update_single = '''UPDATE  single_game SET winners = ? WHERE team_name LIKE ?'''# этот запрос увеличивает количесво побед у определенной команды при победе в одиночной игре
         self.update_tournier = '''UPDATE  tournier SET winners = ? WHERE team_name LIKE ?'''# этот запрос увеличивает количесво побед у определенной команды при победе в турнире
+        self.querry_found_single = '''SELECT winners FROM single_game WHERE team_name LIKE ?'''#Этот запрос выводит рейтинг командв в одиночной игре чтобы при изменении ретинга увеличить его
+        self.querry_found_tournier = '''SELECT winners FROM tournier WHERE team_name LIKE ?'''#Этот запрос выводит рейтинг командв в турнире чтобы при изменении ретинга увеличить его
         self.pushButton_Singe_Game.clicked.connect(self.single_game)
         self.pushButton_Toutnier.clicked.connect(self.tournier)
         self.pushButton_change_single_game.clicked.connect(self.change_raiting_single)
@@ -86,11 +88,67 @@ class Raiting(Ui_MainWindow,QMainWindow):
        
     def change_raiting_single(self):
         '''Эта функция увеличивает рейтинг команды при победе в одиночной игре'''
+        try:
+            with sql.connect(self.database) as conn:
+                self.team_name = self.lineEdit_single_team.text()
+                if self.team_name.strip():
+                    res = conn.cursor().execute(self.querry_found_single,(self.team_name,))
+                    for row in res:
+                        new= row[0]
+                        new += 1
+                        res = conn.cursor().execute(self.update_single,(new,self.team_name))
+                        result = QMessageBox()
+                        result.setText(f'Рейтинг команды {self.team_name} обновлен')
+                        result.exec()
+        except sql.IntegrityError:
+            result = QMessageBox()
+            result.setText('Error')
+            result.exec()
+        except sql.OperationalError:
+            result = QMessageBox()
+            result.setText('Error')
+            result.exec()
+        except TypeError:
+            result = QMessageBox()
+            result.setText('Error')
+            result.exec()
+        except ValueError:
+            result = QMessageBox()
+            result.setText('Error')
+            result.exec()
 
 
     def change_raiting_tournier(self):
         '''Эта функция увеличивает рейтинг команды при победе в турнире'''
 
-        pass
+        try:
+            with sql.connect(self.database) as conn:
+                self.team_name = self.lineEdit_2_tournert.text()
+                if self.team_name.strip():
+                    res = conn.cursor().execute(self.querry_found_tournier,(self.team_name,))
+                    for row in res:
+                        new= row[0]
+                        new += 1
+                        res = conn.cursor().execute(self.update_tournier,(new,self.team_name))
+                        result = QMessageBox()
+                        result.setText(f'Рейтинг команды {self.team_name} обновлен')
+                        result.exec()
+        except sql.IntegrityError:
+            result = QMessageBox()
+            result.setText('Error')
+            result.exec()
+        except sql.OperationalError:
+            result = QMessageBox()
+            result.setText('Error')
+            result.exec()
+        except TypeError:
+            result = QMessageBox()
+            result.setText('Error')
+            result.exec()
+        except ValueError:
+            result = QMessageBox()
+            result.setText('Error')
+            result.exec()
+
 
     
