@@ -58,7 +58,32 @@ class Commands(Ui_MainWindow,QMainWindow):
 
 
     def change_single(self):
-        pass
+        '''Эта функция изменяет название комнды в одиночной игре '''
+        try:
+            with sql.connect(self.database) as conn:
+                self.team_name = self.lineEdit_team_single.text()
+                self.new_name = self.lineEdit_team_single_2_new.text()
+                if self.team_name.strip() and self.new_name.strip():
+                    conn.cursor().execute(self.querry_change_single,(self.new_name,self.team_name))
+                    result = QMessageBox()
+                    result.setText(f'Название команды {self.new_name} применено')
+                    result.exec()
+        except sql.IntegrityError:
+            result = QMessageBox()
+            result.setText('Error')
+            result.exec()
+        except sql.OperationalError:
+            result = QMessageBox()
+            result.setText('Error')
+            result.exec()
+        except TypeError:
+            result = QMessageBox()
+            result.setText('Error')
+            result.exec()
+        except ValueError:
+            result = QMessageBox()
+            result.setText('Error')
+            result.exec()
 
     def delet_single(self):
         pass
@@ -94,7 +119,31 @@ class Commands(Ui_MainWindow,QMainWindow):
 
 
     def change_tournier(self):
-        pass
+        try:
+            with sql.connect(self.database) as conn:
+                self.team_name = self.lineEdit_team_tournier.text()
+                self.new_name = self.lineEdit_team_tournier_2_new .text()
+                if self.team_name.strip() and self.new_name.strip():
+                    conn.cursor().execute(self.querry_change_tournier,(self.new_name,self.team_name))
+                    result = QMessageBox()
+                    result.setText(f'Название команды {self.new_name} применено')
+                    result.exec()
+        except sql.IntegrityError:
+            result = QMessageBox()
+            result.setText('Error')
+            result.exec()
+        except sql.OperationalError:
+            result = QMessageBox()
+            result.setText('Error')
+            result.exec()
+        except TypeError:
+            result = QMessageBox()
+            result.setText('Error')
+            result.exec()
+        except ValueError:
+            result = QMessageBox()
+            result.setText('Error')
+            result.exec()
 
     def delet_tournier(self):
         pass
