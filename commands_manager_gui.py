@@ -15,8 +15,8 @@ class Commands(Ui_MainWindow,QMainWindow):
         self.database = 'app/assets/database/brainring.db'
         self.querry_add_single = '''INSERT INTO single_game (team_name, winners) VALUES (?,?)''' # Этот запрос регистрирует команду в одиноной игре
         self.querry_add_tournier = '''INSERT INTO tournier (team_name, winners) VALUES (?,?)''' # Этот запрос регистрирует команду в турнире
-        self.querry_delet_single ='''DELET FROM single_game WHERE team_name LIKE ?''' # Этот запрос удаляет команду из рейтинга одиночной игры
-        self.querry_delet_tourinier ='''DELET FROM tournier WHERE team_name LIKE ?''' # Этот запрос удаляет команду из рейтинга турнира
+        self.querry_delet_single ='''DELETE FROM single_game WHERE team_name LIKE ?''' # Этот запрос удаляет команду из рейтинга одиночной игры
+        self.querry_delet_tourinier ='''DELETE FROM tournier WHERE team_name LIKE ?''' # Этот запрос удаляет команду из рейтинга турнира
         self.querry_change_single = ''' UPDATE single_game SET team_name = ? WHERE team_name LIKE ?'''#Этот запрос измняет название команды в рейтинге одиночной игры
         self.querry_change_tournier = ''' UPDATE tournier SET team_name = ? WHERE team_name LIKE ?'''#Этот запрос измняет название команды в рейтинге турнира
         self.raiting = 0 # Количество  побед по умолчанию 0 при добавлении новой команды
@@ -86,7 +86,32 @@ class Commands(Ui_MainWindow,QMainWindow):
             result.exec()
 
     def delet_single(self):
-        pass
+        '''Эта функция удалаяет комнду из рейтингов одиночной игры'''
+        try:
+            with sql.connect(self.database) as conn:
+                self.team_name = self.lineEdit_team_single.text()
+                if self.team_name.strip():
+                    conn.cursor().execute(self.querry_delet_single,(self.team_name,))
+                    result = QMessageBox()
+                    result.setText(f'Команда {self.team_name} удалена')
+                    result.exec()
+        except sql.IntegrityError:
+            result = QMessageBox()
+            result.setText('Error')
+            result.exec()
+        except sql.OperationalError:
+            result = QMessageBox()
+            result.setText('Error')
+            result.exec()
+        except TypeError:
+            result = QMessageBox()
+            result.setText('Error')
+            result.exec()
+        except ValueError:
+            result = QMessageBox()
+            result.setText('Error')
+            result.exec()
+            
 
     def add_tournier(self):
         '''Эта функция добавляет команду в турнир'''
@@ -146,4 +171,29 @@ class Commands(Ui_MainWindow,QMainWindow):
             result.exec()
 
     def delet_tournier(self):
-        pass
+        '''Эта функция удаляет комнаду из рейтингов турнира'''
+        try:
+            with sql.connect(self.database) as conn:
+                self.team_name = self.lineEdit_team_tournier.text()
+                if self.team_name.strip():
+                    conn.cursor().execute(self.querry_delet_tourinier,(self.team_name,))
+                    result = QMessageBox()
+                    result.setText(f'Команда {self.team_name} удалена')
+                    result.exec()
+        except sql.IntegrityError:
+            result = QMessageBox()
+            result.setText('Error')
+            result.exec()
+        except sql.OperationalError:
+            result = QMessageBox()
+            result.setText('Error')
+            result.exec()
+        except TypeError:
+            result = QMessageBox()
+            result.setText('Error')
+            result.exec()
+        except ValueError:
+            result = QMessageBox()
+            result.setText('Error')
+            result.exec()
+            
