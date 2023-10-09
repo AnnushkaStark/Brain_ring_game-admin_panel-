@@ -10,13 +10,14 @@ import logging as log
 from dataface import *
 from question_creator_gui import Creator
 from raiting_widow_gui import Raiting
+from commands_manager_gui import Commands
 
 class Controller(Ui_MainWindow,QMainWindow):
     def __init__(self):
         super().__init__()
         self.setupUi(self)
         self.show()
-        self.pushButton_connect.clicked.connect(self.get_connection)
+        self.pushButton_commands.clicked.connect(self.open_command_manager)
         self.pushButton_load_exel.clicked.connect(self.add_questions_from_excel)
         self.lineEdit_new_question.text()
         self.lineEdit_new_answe.text()
@@ -43,26 +44,6 @@ class Controller(Ui_MainWindow,QMainWindow):
         self.excel_file = 'app/assets/database/questions_template.xlsx'    # Имя файла-шаблона, при загрузке через интерфейс - указывать путь выбранному файлу
         self.conn = None
 
-    def get_connection(self):
-        ''' Функция осуществляет подключение к базе данных database '''
-        log.debug("==> get_connection() - функция вызвана.\n")
-        conn = sql.connect(self.database)
-        if conn:
-            try:
-                result =  QMessageBox()
-                result.setText('Cоединение создано')
-                result.exec()
-            except Exception as e:
-                log.error(f"<== Не удалось подключиться к БД: {e}\n")
-                raise
-            finally:
-                    log.debug("<== Соединение с БД создано.\n")
-
-        else:        
-            result =  QMessageBox()
-            result.setText('Не удалось подключиться к базе')
-            result.exec()
-           
 # ----------------------------------------------------------- #
 
     def get_all_questions(self):
@@ -236,7 +217,11 @@ class Controller(Ui_MainWindow,QMainWindow):
         self.raiting.show()
 
         
-        pass
+    def open_command_manager(self):
+        '''Эта функция открывает окно менеджера команд'''
+        self.commands = Commands()
+        self.commands.show()
+        
 
 log.debug("===== Конец выполнения файла database_controller.py. =====")
 
