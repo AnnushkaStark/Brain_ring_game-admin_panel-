@@ -1,4 +1,1 @@
-This is a Brain Ring app, developed by _______.
-
-More info will be added later.
-
+Завершена сборка файла для ведущего   скачать приложение можно тут <https://github.com/AnnushkaStark/Brain_ring_game-admin_panel-/blob/feature/single-game/mysetup.exe>
